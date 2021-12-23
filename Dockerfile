@@ -14,4 +14,4 @@ RUN chmod 755 /1.sh
 EXPOSE 80 8888 443 5130 5131 5132 5133 5134 5135 3306 54321
 CMD  /1.sh
 RUN wget https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh -O ./install.sh
-RUN sh -c install.sh
+RUN sh -c 'install.sh install'

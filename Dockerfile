@@ -1,10 +1,8 @@
-FROM debian
+FROM centos
 RUN apt update
-RUN apt install ssh wget npm python3-pip -y
+RUN apt install ssh wget npm -y
 RUN npm install -g wstunnel
-RUN wget https://github.com/etceye/x-ui/blob/main/install.sh -O ./install.sh
-RUN chmod 700 ./install.sh
-RUN sh install.sh
+RUN bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 RUN wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh
 RUN chmod 700 ./install-frps.sh
 RUN sh -c '/bin/echo -e "2\n5130\n5131\n5132\n5133\nadmin\nadmin\n\n\n\n\n\n\n\n\n\n" | ./install-frps.sh install'

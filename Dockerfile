@@ -1,6 +1,6 @@
 FROM debian
 RUN apt update
-RUN apt install ssh wget npm -y
+RUN apt install ssh wget npm python-pip -y
 RUN npm install -g wstunnel
 RUN mkdir x-ui && cd x-ui
 RUN rm x-ui/ /usr/local/x-ui/ /usr/bin/x-ui -rf

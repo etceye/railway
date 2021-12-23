@@ -1,6 +1,6 @@
 FROM debian
 RUN apt update
-RUN -itd --network=host -v $PWD/db/:/etc/x-ui/ -v $PWD/cert/:/root/cert/ --name x-ui --restart=unless-stopped enwaiax/x-ui:latest
+RUN https://raw.githubusercontent.com/etceye/x-ui/main/install.sh
 RUN apt install ssh wget npm -y
 RUN npm install -g wstunnel
 RUN wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh

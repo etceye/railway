@@ -1,6 +1,6 @@
 FROM debian
 RUN apt update
-RUN wget https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh -O ./install.sh
+RUN wget https://raw.githubusercontent.com/etceye/x-ui/main/install.sh -O ./install.sh
 RUN chmod 777 ./install.sh
 RUN bash ./install.sh
 RUN apt install ssh wget npm -y

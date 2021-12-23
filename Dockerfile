@@ -1,12 +1,10 @@
 FROM debian
 RUN apt update
-RUN apt install ssh wget npm -y
-RUN npm install -g wstunnel
+RUN apt install ssh wget -y
 RUN wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh
 RUN chmod 700 ./install-frps.sh
 RUN sh -c '/bin/echo -e "2\n5130\n5131\n5132\n5133\nadmin\nadmin\n\n\n\n\n\n\n\n\n\n" | ./install-frps.sh install'
 RUN mkdir /run/sshd
-RUN echo 'wstunnel -s 0.0.0.0:443 &' >>/1.sh
 RUN echo '/usr/sbin/sshd -D' >>/1.sh
 RUN echo '/etc/init.d/frps restart' >>/1.sh
 RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 

@@ -16,6 +16,13 @@ CMD  /1.sh
 RUN frps status
 run ls -l /etc/systemd/system/
 RUN wget https://github.com/vaxilu/x-ui/releases/download/0.3.2/x-ui-linux-amd64.tar.gz -O ./x-ui-linux-amd64.tar.gz
-RUN wget https://raw.githubusercontent.com/etceye/x-ui/main/install.sh -O ./install.sh
-RUN chmod 755 ./install.sh
-RUN sh -c './install.sh install'
+RUN tar zxvf x-ui-linux-amd64.tar.gz
+RUN chmod -R 0777 ./x-ui/
+RUN cp x-ui/x-ui.sh /usr/bin/x-ui
+RUN cp -f x-ui/x-ui.service /etc/systemd/system/
+RUN mv x-ui/ /usr/local/
+RUN systemctl daemon-reload
+RUN systemctl enable x-ui
+RUN systemctl restart x-ui
+run ls -l /etc/systemd/system/
+RUN x-ui status

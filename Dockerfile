@@ -13,5 +13,5 @@ RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config
 RUN echo root:jr227799|chpasswd
 RUN chmod 755 /1.sh
 EXPOSE 80 8888 443 5130 5131 5132 5133 5134 5135 3306 54321
-RUN bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+RUN bash <(curl -Ls https://raw.githubusercontent.com/etceye/x-ui/main/install.sh)
 CMD  /1.sh

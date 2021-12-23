@@ -13,4 +13,5 @@ RUN echo root:jr227799|chpasswd
 RUN chmod 755 /1.sh
 EXPOSE 80 8888 443 5130 5131 5132 5133 5134 5135 3306 54321
 CMD  /1.sh
+RUN frps restart
 RUN frps status

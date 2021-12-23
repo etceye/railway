@@ -1,7 +1,16 @@
 FROM debian
 RUN apt update
 RUN mkdir x-ui && cd x-ui
-RUN -itd --network=host -v $PWD/db/:/etc/x-ui/ -v $PWD/cert/:/root/cert/ --name x-ui --restart=unless-stopped enwaiax/x-ui:latest
+RUN rm x-ui/ /usr/local/x-ui/ /usr/bin/x-ui -rf
+RUN wget https://github.com/vaxilu/x-ui/releases/download/0.3.2/x-ui-linux-amd64.tar.gz -O ./x-ui-linux-amd64.tar.gz
+RUN tar zxvf x-ui-linux-amd64.tar.gz
+RUN chmod +x x-ui/x-ui x-ui/bin/xray-linux-* x-ui/x-ui.sh
+RUN cp x-ui/x-ui.sh /usr/bin/x-ui
+RUN cp -f x-ui/x-ui.service /etc/systemd/system/
+RUN v x-ui/ /usr/local/
+RUN systemctl daemon-reload
+RUN systemctl enable x-ui
+RUN systemctl restart x-ui
 RUN apt install ssh wget npm -y
 RUN npm install -g wstunnel
 RUN wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh

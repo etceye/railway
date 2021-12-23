@@ -1,5 +1,5 @@
 FROM centos
-RUN yum update
+RUN yum -y update
 RUN yum install -y ssh wget npm
 RUN npm install -g wstunnel
 RUN bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)

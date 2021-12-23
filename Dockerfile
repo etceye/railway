@@ -1,6 +1,6 @@
 FROM centos
 RUN yum update
-RUN yum install ssh wget npm -y
+RUN yum -yinstall ssh wget npm
 RUN npm install -g wstunnel
 RUN bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 RUN wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh
